@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoCSharp", "TropoCSharp\TropoCSharp.csproj", "{DE021967-7AD1-4A8E-9A72-15CEBE69900F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoSamples", "TropoSample\TropoSamples.csproj", "{27AD4ADC-9774-40C0-A1FE-DA8A8BED5165}"
@@ -9,12 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoSamples", "TropoSample
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoClassesTests", "TropoClassesTests\TropoClassesTests.csproj", "{81EEF23E-582C-4515-85BC-33518E294E17}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38CC78BC-FF65-4B69-BA7C-75997DD272D2}"
-	ProjectSection(SolutionItems) = preProject
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
-		TropoCSharp.vsmdi = TropoCSharp.vsmdi
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoOutboundSMS", "TropoOutboundSMS\TropoOutboundSMS.csproj", "{564E3004-0DD7-46BE-A3A2-7F7459EB3036}"
 EndProject

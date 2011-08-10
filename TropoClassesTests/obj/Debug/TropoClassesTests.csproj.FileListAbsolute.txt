@@ -25,3 +25,17 @@ C:\GitStuff\tropo-webapi-csharp\TropoClassesTests\bin\Debug\Newtonsoft.Json.xml
 C:\GitStuff\tropo-webapi-csharp\TropoClassesTests\obj\Debug\ResolveAssemblyReference.cache
 C:\GitStuff\tropo-webapi-csharp\TropoClassesTests\obj\Debug\TropoClassesTests.dll
 C:\GitStuff\tropo-webapi-csharp\TropoClassesTests\obj\Debug\TropoClassesTests.pdb
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\TropoClassesTests.dll
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\TropoClassesTests.pdb
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\nunit.framework.dll
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\nunit.mocks.dll
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\pnunit.framework.dll
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\TropoCSharp.dll
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\Newtonsoft.Json.dll
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\TropoCSharp.pdb
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\nunit.framework.xml
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\Newtonsoft.Json.pdb
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\bin\Debug\Newtonsoft.Json.xml
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\obj\Debug\ResolveAssemblyReference.cache
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\obj\Debug\TropoClassesTests.dll
+C:\AquaBirdProjects\tropo-webapi-csharp\TropoClassesTests\obj\Debug\TropoClassesTests.pdb

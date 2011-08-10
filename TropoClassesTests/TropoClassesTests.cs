@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using TropoCSharp.Tropo;
 using TropoCSharp.Structs;
-using System.Collections;
 
 namespace TropoClassesTests
 {
     /// <summary>
     /// A Summary description for TropoClassesTests
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class TropoClassesTests
     {
         private string askJson = @"{""tropo"":[{ ""ask"":{""name"":""foo"",""choices"":{""value"":""[5 DIGITS]""},""say"":{""value"":""Please enter your 5 digit zip code.""}}}]}";
@@ -29,14 +26,10 @@ namespace TropoClassesTests
         private string conferenceJson = @"{""tropo"":[{ ""call"":{""to"":[""3035551212""]}},{ ""say"":{""value"":""Welcome to the conference.""}},{ ""conference"":{""id"":""123456789098765432"",""mute"":false,""name"":""testConference"",""playTones"":false,""terminator"":""#"",""required"":true}},{ ""say"":{""value"":""Thank you for joining the conference.""}}]}";
         private string conferenceJsonWithEvents = @"{""tropo"":[{ ""call"":{""to"":[""3035551212""]}},{ ""say"":{""value"":""Welcome to the conference.""}},{ ""conference"":{""id"":""123456789098765432"",""allowSignals"":[""conferenceOver""],""mute"":false,""name"":""testConference"",""playTones"":false,""terminator"":""#"",""required"":true}}]}";
 
-        public TropoClassesTests()
-        {
-        }
+    	#region Ask Tests
 
-        #region Ask Tests
-
-        [TestMethod]
-        public void testAsk()
+        [Test]
+        public void Ask()
         {
             Say say = new Say("Please enter your 5 digit zip code.");
             Choices choices = new Choices("[5 DIGITS]");
@@ -46,8 +39,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.askJson, tropo.RenderJSON());
         }
         
-        [TestMethod]
-        public void testAskFromObject()
+        [Test]
+        public void AskFromObject()
         {
             Say say = new Say("Please enter your 5 digit zip code.");
             Choices choices = new Choices("[5 DIGITS]");
@@ -58,8 +51,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.askJson, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testAskWithOptions()
+        [Test]
+        public void AskWithOptions()
         {
             Say say = new Say("Please enter your 5 digit zip code.");
             Choices choices = new Choices("[5 DIGITS]");
@@ -78,8 +71,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.askJsonWithOptions, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testAskWithOptionsInDifferentOrder()
+        [Test]
+        public void AskWithOptionsInDifferentOrder()
         {
             Say say = new Say("Please enter your 5 digit zip code.");
             Choices choices = new Choices("[5 DIGITS]");
@@ -98,16 +91,16 @@ namespace TropoClassesTests
             Assert.AreEqual(this.askJsonWithOptions, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testAskMethodWithAllArguements()
+        [Test]
+        public void AskMethodWithAllArguements()
         {
             Tropo tropo = new Tropo();
             tropo.Ask(1, false, new Choices("[5 DIGITS]"), 30, "foo", true, new Say("Please enter your 5 digit zip code."), 30);
             Assert.AreEqual(this.askJsonWithOptions, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testAskWithEvents()
+        [Test]
+        public void AskWithEvents()
         {
             Tropo tropo = new Tropo();
             string[] signals = new string[] { "endCall", "tooLong" };
@@ -122,8 +115,8 @@ namespace TropoClassesTests
 
         #region Call Tests
 
-        [TestMethod]
-        public void testToOnly()
+        [Test]
+        public void ToOnly()
         {
             List<String> numbersToCall = new List<String>();
             numbersToCall.Add("3055195825");
@@ -134,8 +127,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.callJson, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testCallUseAllOptions()
+        [Test]
+        public void CallUseAllOptions()
         {
             Tropo tropo = new Tropo();
 
@@ -149,8 +142,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.callJsonAllOptions, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testCallUsingCallObject()
+        [Test]
+        public void CallUsingCallObject()
         {
 
             Tropo tropo = new Tropo();
@@ -178,8 +171,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.callJsonAllOptions, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testCallWithEvents()
+        [Test]
+        public void CallWithEvents()
         {
             Tropo tropo = new Tropo();
 
@@ -197,8 +190,8 @@ namespace TropoClassesTests
 
         #region Message Tests
 
-        [TestMethod]
-        public void testMessage()
+        [Test]
+        public void Message()
         {
             Say say = new Say("This is an announcement");
             Tropo tropo = new Tropo();
@@ -211,8 +204,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.messageJson, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testMessageFromObject()
+        [Test]
+        public void MessageFromObject()
         {
             Say say = new Say("This is an announcement");
             string from = "3055551212";
@@ -234,8 +227,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.messageJson, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testMessageUseAllOptions()
+        [Test]
+        public void MessageUseAllOptions()
         {
             Say say = new Say("This is an announcement");
             Tropo tropo = new Tropo();
@@ -252,8 +245,8 @@ namespace TropoClassesTests
 
         #region Record Tests
 
-        [TestMethod]
-        public void testNewRecord()
+        [Test]
+        public void NewRecord()
         {
             Say say = new Say("Please say your account number");
             Choices choices = new Choices("[5 DIGITS]", null, "#");
@@ -262,8 +255,8 @@ namespace TropoClassesTests
             tropo.Record(null, null, null, choices, AudioFormat.Wav, null, null, Method.Post, null, null, say, null, null, null);
         }
 
-        [TestMethod]
-        public void testNewRecordFromObject()
+        [Test]
+        public void NewRecordFromObject()
         {
             Say say = new Say("Please say your account number");
             Choices choices = new Choices("[5 DIGITS]", null, "#");
@@ -279,8 +272,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.recordJson, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testNewRecordObjectWithOptionsInDifferentOrder()
+        [Test]
+        public void NewRecordObjectWithOptionsInDifferentOrder()
         {
             Say say = new Say("Please say your account number");
             Choices choices = new Choices("[5 DIGITS]", null, "#");
@@ -296,8 +289,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.recordJson, tropo.RenderJSON());
         }
         
-        [TestMethod]
-        public void testRecordTranscription()
+        [Test]
+        public void RecordTranscription()
         {
             Say say = new Say("Please say your account number");
             Choices choices = new Choices("[5 DIGITS]", null, "#");
@@ -316,8 +309,8 @@ namespace TropoClassesTests
 
         #region StartRecording Tests
 
-        [TestMethod]
-        public void testNewStartRecording()
+        [Test]
+        public void NewStartRecording()
         {
             Tropo tropo = new Tropo();
             tropo.StartRecording(AudioFormat.Mp3, Method.Post, "http://blah.com/recordings/1234.wav", "jose", "password");
@@ -325,8 +318,8 @@ namespace TropoClassesTests
             Assert.AreEqual(this.startRecordingJson, tropo.RenderJSON());
         }
 
-        [TestMethod]
-        public void testNewStartRecordingObject()
+        [Test]
+        public void NewStartRecordingObject()
         {
             StartRecording startRecording = new StartRecording();
             startRecording.Format = AudioFormat.Mp3;
@@ -345,8 +338,8 @@ namespace TropoClassesTests
 
         #region Conference Tests
 
-        [TestMethod]
-        public void testConference()
+        [Test]
+        public void Conference()
         {
             Tropo tropo = new Tropo();
             tropo.Call("3035551212");
@@ -358,8 +351,8 @@ namespace TropoClassesTests
 
         }
 
-        [TestMethod]
-        public void testConferenceWithEvents()
+        [Test]
+        public void ConferenceWithEvents()
         {
             Tropo tropo = new Tropo();
             string[] signals = new string[] { "conferenceOver" };

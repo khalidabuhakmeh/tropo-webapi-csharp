@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -192,7 +191,7 @@ namespace TropoCSharp.Tropo
         }
 
         /// <summary>
-        /// Overload for call that allows multiple calls to be made with one parmameter.
+        /// Overload for call that allows multiple calls to be made with one parameter.
         /// </summary>
         /// <param name="to">An ArryList containing recipients to call.</param>
         public void Call(IEnumerable<String> to)
@@ -318,7 +317,7 @@ namespace TropoCSharp.Tropo
         /// Adds an event callback so that your application may be notified when a particular event occurs.
         /// </summary>
         /// <param name="event">This defines which event the on action handles.</param>
-        /// <param name="next">When an associated event occurs, Tropo will post to the URL defined here. If left blank, Tropo will simply hangup.</param>
+        /// <param name="next">When an associated event occurs, Tropo will post to the URL defined here. If left blank, Tropo will simply hang-up.</param>
         /// <param name="say">This determines what is played or sent to the caller.</param>      
         public void On(string @event, string next, Say say)
         {
@@ -342,7 +341,7 @@ namespace TropoCSharp.Tropo
         /// <summary>
         /// Plays a prompt (audio file or text to speech) and optionally waits for a response from the caller that is recorded.
         /// If collected, responses may be in the form of DTMF or speech recognition using a simple grammar format defined below.
-        /// The record funtion is really an alias of the prompt function, but one which forces the record option to true regardless of how it is (or is not) initially set.
+        /// The record function is really an alias of the prompt function, but one which forces the record option to true regardless of how it is (or is not) initially set.
         /// At the conclusion of the recording, the audio file may be automatically sent to an external server via FTP or an HTTP POST/Multipart Form.
         /// If specified, the audio file may also be transcribed and the text returned to you via an email address or HTTP POST/Multipart Form.
         /// </summary>
@@ -571,7 +570,7 @@ namespace TropoCSharp.Tropo
         }
 
         /// <summary>
-        /// Ooverload method for Say that allows an arrat of prompts to be used.
+        /// Overload method for Say that allows an array of prompts to be used.
         /// </summary>
         /// <param name="says">The prompts to say or send to the caller.</param>
         public void Say(IEnumerable<String> says)

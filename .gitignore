@@ -1,9 +1,19 @@
 # Ignore Compiled source and Debug Files #
 ##########################################
-*.dll
-*.mdb
-*.exe
-*.trx
-*.tmp
-*.pidb
-*.cd
+*.sln.cache
+_ReSharper.*
+bin
+obj
+build
+dist
+*.suo
+*resharper*
+*.user
+TestResult.xml
+specs.html
+*.nupkg
+*.psd
+*.PSD
+*.fdb
+*.xml
+App_Data/Elmah.Errors/*.xml
