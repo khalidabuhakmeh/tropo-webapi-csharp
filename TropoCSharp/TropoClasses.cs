@@ -32,7 +32,7 @@ namespace TropoCSharp.Tropo
         public Choices Choices { get; set; }
 
         [JsonProperty(PropertyName = "say")]
-        public Say Say { get; set; }
+        public IEnumerable<Say> Say { get; set; }
 
         [JsonProperty(PropertyName = "timeout")]
         public float? Timeout { get; set; }
@@ -42,13 +42,21 @@ namespace TropoCSharp.Tropo
 
         public Ask()
         {
+        	Say = new Say[0];
         }
 
         public Ask(Choices choices, string name, Say say)
         {
             Choices = choices;
             Name = name;
-            Say = say;
+            Say = new [] {say};
+        }
+
+		public Ask(Choices choices, string name, IEnumerable<Say> say)
+        {
+            Choices = choices;
+            Name = name;
+			Say = say;
         }
     }
 
@@ -369,6 +377,9 @@ namespace TropoCSharp.Tropo
         [JsonProperty(PropertyName = "voice")]
         public string Voice { get; set; }
 
+		[JsonProperty(PropertyName = "event")]
+    	public string Event { get; set; }
+
         public Say()
         {
         }
@@ -376,6 +387,12 @@ namespace TropoCSharp.Tropo
         public Say(string @value)
         {
             Value = @value;
+        }
+
+		public Say(string @value, string @event)
+        {
+            Value = @value;
+			Event = @event;
         }
     }
 

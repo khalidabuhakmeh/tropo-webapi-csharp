@@ -44,6 +44,22 @@ namespace TropoCSharp.Tropo
         /// <param name="timeout">The amount of time Tropo will wait, in seconds, after sending or playing the prompt for the user to begin a response.</param>
         public void Ask(int? attempts, bool? bargein, Choices choices, int? minConfidence, string name, bool? required, Say say, float? timeout)
         {
+          Ask(attempts, bargein, choices, minConfidence, name, required, new [] { say }, timeout);
+        }
+
+		/// <summary>
+        /// Sends a prompt to the user and optionally waits for a response. 
+        /// </summary>
+        /// <param name="attempts">How many times the caller can attempt input before an error is thrown.</param>
+        /// <param name="bargein">Should the user be allowed to barge in before TTS is complete?</param>
+        /// <param name="choices">The grammar to use in recognizing and validating input.</param>
+        /// <param name="minConfidence">How confident should Tropo be in a speech recognition match?</param>
+        /// <param name="name">identifies the return value of an ask, so you know the context for the returned information.</param>
+        /// <param name="required">Is input required here?</param>
+        /// <param name="say">This determines what is played or sent to the caller.</param>
+        /// <param name="timeout">The amount of time Tropo will wait, in seconds, after sending or playing the prompt for the user to begin a response.</param>
+        public void Ask(int? attempts, bool? bargein, Choices choices, int? minConfidence, string name, bool? required, IEnumerable<Say> says, float? timeout)
+        {
             Ask ask = new Ask();
             ask.Attempts = attempts;
             ask.Bargein = bargein;
@@ -52,7 +68,7 @@ namespace TropoCSharp.Tropo
             ask.Name = name;
             ask.Required = required;
             ask.Voice = String.IsNullOrEmpty(this.Voice) ? null : this.Voice;
-            ask.Say = say;
+            ask.Say = says;
             ask.Timeout = timeout;
 
             Serialize(ask, "ask");
@@ -81,7 +97,36 @@ namespace TropoCSharp.Tropo
             ask.Name = name;
             ask.Required = required;
             ask.Voice = String.IsNullOrEmpty(this.Voice) ? null : this.Voice;
-            ask.Say = say;
+            ask.Say = new [] {say};
+            ask.Timeout = timeout;
+
+            Serialize(ask, "ask");
+        }
+
+		/// <summary>
+        /// Overload method for Ask that allows events to be set via allowSignals.
+        /// </summary>
+        /// <param name="attempts">How many times the caller can attempt input before an error is thrown.</param>
+        /// <param name="bargein">Should the user be allowed to barge in before TTS is complete?</param>
+        /// <param name="choices">The grammar to use in recognizing and validating input</param>
+        /// <param name="minConfidence">How confident should Tropo be in a speech reco match?</param>
+        /// <param name="name">Identifies the return value of an Ask, so you know the context for the returned information.</param>
+        /// <param name="required">Is input required here?</param>
+        /// <param name="says">This determines what is played or sent to the caller.</param>
+        /// <param name="timeout">The amount of time Tropo will wait, in seconds, after sending or playing the prompt for the user to begin a response.</param>
+        /// <param name="events">??</param>
+        public void Ask(int? attempts, Array allowSignals, bool? bargein, Choices choices, int? minConfidence, string name, bool? required, IEnumerable<Say> says, float? timeout)
+        {
+            Ask ask = new Ask();
+            ask.Attempts = attempts;
+            ask.allowSignals = allowSignals;
+            ask.Bargein = bargein;
+            ask.Choices = choices;
+            ask.MinConfidence = minConfidence;
+            ask.Name = name;
+            ask.Required = required;
+            ask.Voice = String.IsNullOrEmpty(this.Voice) ? null : this.Voice;
+            ask.Say = says;
             ask.Timeout = timeout;
 
             Serialize(ask, "ask");

@@ -12,9 +12,9 @@ namespace TropoClassesTests
     [TestFixture]
     public class TropoClassesTests
     {
-        private string askJson = @"{""tropo"":[{ ""ask"":{""name"":""foo"",""choices"":{""value"":""[5 DIGITS]""},""say"":{""value"":""Please enter your 5 digit zip code.""}}}]}";
-        private string askJsonWithEvents = @"{""tropo"":[{ ""ask"":{""attempts"":5,""allowSignals"":[""endCall"",""tooLong""],""bargein"":false,""name"":""test"",""required"":true,""choices"":{""value"":""1,2,3""},""say"":{""value"":""This is an Ask test with events. Please enter 1, 2 or 3.""},""timeout"":30.0}},{ ""hangup"":{}}]}";
-        private string askJsonWithOptions = @"{""tropo"":[{ ""ask"":{""attempts"":1,""bargein"":false,""minConfidence"":30,""name"":""foo"",""required"":true,""choices"":{""value"":""[5 DIGITS]""},""say"":{""value"":""Please enter your 5 digit zip code.""},""timeout"":30.0}}]}";
+        private string askJson = @"{""tropo"":[{ ""ask"":{""name"":""foo"",""choices"":{""value"":""[5 DIGITS]""},""say"":[{""value"":""Please enter your 5 digit zip code.""}]}}]}";
+        private string askJsonWithEvents = @"{""tropo"":[{ ""ask"":{""attempts"":5,""allowSignals"":[""endCall"",""tooLong""],""bargein"":false,""name"":""test"",""required"":true,""choices"":{""value"":""1,2,3""},""say"":[{""value"":""This is an Ask test with events. Please enter 1, 2 or 3.""}],""timeout"":30.0}},{ ""hangup"":{}}]}";
+        private string askJsonWithOptions = @"{""tropo"":[{ ""ask"":{""attempts"":1,""bargein"":false,""minConfidence"":30,""name"":""foo"",""required"":true,""choices"":{""value"":""[5 DIGITS]""},""say"":[{""value"":""Please enter your 5 digit zip code.""}],""timeout"":30.0}}]}";
         private string recordJson = @"{""tropo"":[{ ""record"":{""choices"":{""value"":""[5 DIGITS]"",""terminator"":""#""},""format"":""audio/wav"",""method"":""POST"",""required"":true,""say"":{""value"":""Please say your account number""}}}]}";
         private string recordJsonWithTranscription = @"{""tropo"":[{ ""record"":{""attempts"":1,""bargein"":false,""beep"":true,""choices"":{""value"":""[5 DIGITS]"",""terminator"":""#""},""format"":""audio/wav"",""maxSilence"":5.0,""maxTime"":30.0,""method"":""POST"",""required"":true,""say"":{""value"":""Please say your account number""},""timeout"":5.0,""password"":""foo"",""transcription"":{""id"":""foo"",""uri"":""http://example.com/"",""emailFormat"":""encoded""},""username"":""bar"",""url"":""http://example.com/""}}]}";
         private string callJson = @"{""tropo"":[{ ""call"":{""to"":[""3055195825"",""3054445567""]}}]}";
@@ -59,7 +59,7 @@ namespace TropoClassesTests
             Ask ask = new Ask();
             ask.Choices = choices;
             ask.Name = "foo";
-            ask.Say = say;
+            ask.Say = new [] { say };
             ask.Timeout = 30;
             ask.Required = true;
             ask.MinConfidence = 30;
@@ -82,7 +82,7 @@ namespace TropoClassesTests
             ask.Required = true;
             ask.Attempts = 1;
             ask.Name = "foo";
-            ask.Say = say;
+            ask.Say = new[] { say };
             ask.Timeout = 30;            
             ask.MinConfidence = 30;           
 
