@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>tropo-webapi</id>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <title>Tropo Web API</title>
     <authors>Tropo</authors>
     <owners>Khalid Abuhakmeh</owners>
