@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoOutboundSMS", "TropoOu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoConference", "TropoConference\TropoConference.csproj", "{771A2BE5-CA58-47C7-B15F-94A5CC4B0478}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TropoCSharp.Mvc", "TropoCSharp.Mvc\TropoCSharp.Mvc.csproj", "{2507254E-D8C7-4AB3-965A-F2A7287C14BC}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TropoCSharp.vsmdi
@@ -43,6 +45,10 @@ Global
 		{771A2BE5-CA58-47C7-B15F-94A5CC4B0478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{771A2BE5-CA58-47C7-B15F-94A5CC4B0478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{771A2BE5-CA58-47C7-B15F-94A5CC4B0478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2507254E-D8C7-4AB3-965A-F2A7287C14BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2507254E-D8C7-4AB3-965A-F2A7287C14BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2507254E-D8C7-4AB3-965A-F2A7287C14BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2507254E-D8C7-4AB3-965A-F2A7287C14BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
