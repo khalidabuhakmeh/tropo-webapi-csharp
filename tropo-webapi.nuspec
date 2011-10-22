@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>tropo-webapi</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Tropo Web API</title>
     <authors>Tropo</authors>
     <owners>Khalid Abuhakmeh</owners>
@@ -13,7 +13,7 @@
     <summary />
     <tags>Telephony, Tropo, C#, Web, API</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="4.0.2" />
+      <dependency id="Newtonsoft.Json" version="4.0.3" />
     </dependencies>
   </metadata>
   <files>
