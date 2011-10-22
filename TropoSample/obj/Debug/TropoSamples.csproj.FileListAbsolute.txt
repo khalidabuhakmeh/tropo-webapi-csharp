@@ -32,3 +32,13 @@ C:\AquaBirdProjects\tropo-webapi-csharp\TropoSample\bin\Newtonsoft.Json.xml
 C:\AquaBirdProjects\tropo-webapi-csharp\TropoSample\bin\TropoCSharp.pdb
 C:\AquaBirdProjects\tropo-webapi-csharp\TropoSample\obj\Debug\TropoSample.dll
 C:\AquaBirdProjects\tropo-webapi-csharp\TropoSample\obj\Debug\TropoSample.pdb
+C:\Projects\tropo-webapi-csharp\TropoSample\bin\TropoSample.dll
+C:\Projects\tropo-webapi-csharp\TropoSample\bin\TropoSample.pdb
+C:\Projects\tropo-webapi-csharp\TropoSample\bin\Newtonsoft.Json.dll
+C:\Projects\tropo-webapi-csharp\TropoSample\bin\TropoCSharp.dll
+C:\Projects\tropo-webapi-csharp\TropoSample\bin\TropoCSharp.pdb
+C:\Projects\tropo-webapi-csharp\TropoSample\bin\Newtonsoft.Json.pdb
+C:\Projects\tropo-webapi-csharp\TropoSample\bin\Newtonsoft.Json.xml
+C:\Projects\tropo-webapi-csharp\TropoSample\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\tropo-webapi-csharp\TropoSample\obj\Debug\TropoSample.dll
+C:\Projects\tropo-webapi-csharp\TropoSample\obj\Debug\TropoSample.pdb

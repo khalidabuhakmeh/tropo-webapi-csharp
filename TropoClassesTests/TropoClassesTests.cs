@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using NUnit.Framework;
 using TropoCSharp.Tropo;
 using TropoCSharp.Structs;
@@ -364,5 +366,20 @@ namespace TropoClassesTests
         }
 
         #endregion
+
+        #region New Session
+        
+        [Test]
+        public void NewSession()
+        {
+            var xml = new MemoryStream(Encoding.UTF8.GetBytes(@"<session><success>true</success><token>TOKEN</token><id>ID</id></session>"));
+            var session = new NewSession(xml);
+            Assert.IsTrue(session.Success);
+            Assert.AreEqual("TOKEN", session.Token);
+            Assert.AreEqual("ID", session.Id);
+        }
+
+        #endregion
+
     }
 }

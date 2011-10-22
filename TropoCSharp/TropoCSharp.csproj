@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="TropoNewSession.cs" />
     <Compile Include="Structs.cs" />
     <Compile Include="Tropo.cs" />
     <Compile Include="TropoBase.cs" />
