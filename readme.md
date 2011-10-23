@@ -16,7 +16,7 @@ Tests for various Tropo action classes are in the TropoClassesTests solution.
 
 Project with samples (ASP.NET web application) will use a directory called TropoSample (e.g., http://localhost/TropoSample).
 
-Example
+TropoCSharp Example
 ======
 
 <pre>
@@ -39,6 +39,37 @@ namespace TropoSamples
             // Render the JSON for Tropo to consume.
             Response.Write(tropo.RenderJSON());
 		}
+	}
+}
+</pre>
+
+TropoCSharp.Mvc Example
+======
+
+<pre>
+using System;
+using TropoCSharp.Tropo;
+
+namespace TropoSamples
+{
+	public class HelloWorldController: TropoController {
+    
+    public HelloWorldController() {
+      ApiToken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    }
+    
+    public ActionResult Index(Session session) {
+      Script.Say("Hello, World");
+      Script.On(Event.Continue, To("Next"), new Say("thanks"));
+      return Write();
+    }
+    
+    public ActionResult Next(Result result) {
+      Script.Say("Cool");
+      Script.HangUp();
+      return Write();
+    }
+	
 	}
 }
 </pre>

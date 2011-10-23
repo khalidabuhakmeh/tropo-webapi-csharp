@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Web.Mvc;
 using System.Xml;
+using TropoCSharp.Structs;
 using TropoCSharp.Tropo;
 
 namespace TropoCSharp.Mvc
 {
     public abstract class TropoController : Controller
     {
-        protected Tropo.Tropo Script { get; private set; }
-        protected string ApiToken { get; set; }
-        private const string TropoUrl = "https://api.tropo.com/1.0/sessions/{1}/signals?action=signal&value={2}&token=#{0}";
-        
+        private const string TropoUrl =
+            "https://api.tropo.com/1.0/sessions/{1}/signals?action=signal&value={2}&token=#{0}";
+
         /// <summary>
         /// Remember to intialize the ApiToken property
         /// </summary>
@@ -21,6 +22,13 @@ namespace TropoCSharp.Mvc
         {
             Script = new Tropo.Tropo();
         }
+
+        protected Tropo.Tropo Script { get; private set; }
+
+        /// <summary>
+        /// Either Tropo Voice Token, can be found in the Applications page, under the specific application
+        /// </summary>
+        protected string ApiToken { get; set; }
 
         /// <summary>
         /// Will write out the current script up to this point and return a ContentResult with the corresponding JSON.
@@ -41,7 +49,7 @@ namespace TropoCSharp.Mvc
         /// <returns></returns>
         protected string To(string action, string controller = null, object values = null, string protocol = null)
         {
-            var controllerName = controller ?? GetControllerName();
+            string controllerName = controller ?? GetControllerName();
             protocol = protocol ?? (Request.IsSecureConnection ? "https" : "http");
             return Url.Action(action, controllerName, values, protocol);
         }
@@ -52,19 +60,19 @@ namespace TropoCSharp.Mvc
         /// <param name="sessionId"></param>
         /// <param name="eventName"></param>
         /// <returns></returns>
-        protected string Signal(string sessionId, string eventName = Structs.Event.Continue)
+        protected string Signal(string sessionId, string eventName = Event.Continue)
         {
-            if (string.IsNullOrWhiteSpace(ApiToken)) throw new ArgumentException("please remember to set your api token.");
+            ValidateApiToken();
 
-            var url = string.Format(TropoUrl, ApiToken, sessionId, eventName);
-            var httpRequest = WebRequest.Create(url);
+            string url = string.Format(TropoUrl, ApiToken, sessionId, eventName);
+            WebRequest httpRequest = WebRequest.Create(url);
             httpRequest.Method = "GET";
 
             string result;
             try
             {
                 WebResponse response = httpRequest.GetResponse();
-                using (var stream = response.GetResponseStream())
+                using (Stream stream = response.GetResponseStream())
                 {
                     var doc = new XmlDocument();
                     doc.Load(stream);
@@ -79,6 +87,12 @@ namespace TropoCSharp.Mvc
             return result;
         }
 
+        private void ValidateApiToken()
+        {
+            if (string.IsNullOrWhiteSpace(ApiToken))
+                throw new ArgumentException("please remember to set your api token.");
+        }
+
         /// <summary>
         /// Will provide you with a Url that will be used to signal another session
         /// </summary>
@@ -88,20 +102,27 @@ namespace TropoCSharp.Mvc
         /// <param name="sessionId"></param>
         /// <param name="eventName"></param>
         /// <returns></returns>
-        protected string SignalTo(string sessionId, string eventName = Structs.Event.Continue)
+        protected string SignalTo(string sessionId, string eventName = Event.Continue)
         {
             return string.Format(TropoUrl, ApiToken, sessionId, eventName);
         }
 
-        protected NewSession StartNewSession(IDictionary<string, string> parameters = null)
+        /// <summary>
+        /// Will create a new session, pass in parameters to use on the next session
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected NewSession CreateNewSession(IDictionary<string, string> parameters = null)
         {
-            var par = new Dictionary<string, string>(parameters);
+            ValidateApiToken();
+
+            var par = parameters ?? new Dictionary<string, string>();
             return new NewSession(Script.CreateSession(ApiToken, par));
         }
 
-        protected string GetControllerName()
+        private string GetControllerName()
         {
-            var controllerName = GetType().Name;
+            string controllerName = GetType().Name;
             return controllerName.Substring(0, controllerName.Length - "Controller".Length).ToLowerInvariant();
         }
     }
