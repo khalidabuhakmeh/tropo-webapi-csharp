@@ -46,10 +46,29 @@ namespace TropoSamples
 TropoCSharp.Mvc Example
 ======
 
+Although you don't have to use TropoCSharp.Mvc for your ASP.Net MVC based projects, you really should. The Controller has been proven very helpful and has some things not found in the core library. There are model binders for a Tropo Session and a Result, in addition to a base controller that really makes it a joy to work with the WebAPI. Don't forget to set your API Token or else the controller actions will fail to create new sessions.
+
 <pre>
 using System;
+using System.Web.Mvc;
+using TropoCSharp.Mvc.ModelBinders;
 using TropoCSharp.Tropo;
 
+// In Your Global.asax, register the model binders to get the proper binding.
+namespace TropoSample
+{
+	public class Global : System.Web.HttpApplication
+	{
+		protected virtual void Application_Start (Object sender, EventArgs e)
+		{
+            ModelBinders.Binders.Add(typeof(Session), new SessionModelBinder());
+            ModelBinders.Binders.Add(typeof(Result), new ResultModelBinder());
+		}
+	}
+}
+
+
+// Your controller 
 namespace TropoSamples
 {
 	public class HelloWorldController: TropoController {
