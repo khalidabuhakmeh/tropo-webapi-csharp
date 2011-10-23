@@ -47,6 +47,7 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
@@ -127,6 +128,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TropoCSharp.Mvc\TropoCSharp.Mvc.csproj">
+      <Project>{2507254E-D8C7-4AB3-965A-F2A7287C14BC}</Project>
+      <Name>TropoCSharp.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TropoCSharp\TropoCSharp.csproj">
       <Project>{DE021967-7AD1-4A8E-9A72-15CEBE69900F}</Project>
       <Name>TropoCSharp</Name>
