@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web.Mvc;
-using System.Xml;
+using System.Xml.Linq;
 using TropoCSharp.Structs;
 using TropoCSharp.Tropo;
 
@@ -62,26 +62,34 @@ namespace TropoCSharp.Mvc
         /// <returns></returns>
         protected string Signal(string sessionId, string eventName = Event.Continue)
         {
+            const string resultError = "Error";
             ValidateApiToken();
 
-            string url = string.Format(TropoUrl, ApiToken, sessionId, eventName);
-            WebRequest httpRequest = WebRequest.Create(url);
+            var url = string.Format(TropoUrl, ApiToken, sessionId, eventName);
+            var httpRequest = WebRequest.Create(url);
             httpRequest.Method = "GET";
 
             string result;
             try
             {
-                WebResponse response = httpRequest.GetResponse();
-                using (Stream stream = response.GetResponseStream())
+                var response = httpRequest.GetResponse();
+                using (var stream = response.GetResponseStream())
                 {
-                    var doc = new XmlDocument();
-                    doc.Load(stream);
-                    result = doc.SelectSingleNode("status").Value;
+                    if (null != stream)
+                    {
+                        var doc = XDocument.Load(stream);
+                        var status = doc.Descendants("status").First();
+                        result = (status != null) ? status.Value : resultError;
+                    }
+                    else
+                    {
+                        result = resultError;
+                    }
                 }
             }
             catch (Exception)
             {
-                return "Error";
+                result = resultError;
             }
 
             return result;
