@@ -13,7 +13,7 @@
     <summary />
     <tags>Telephony, Tropo, C#, Web, API, ASP.NET MVC</tags>
     <dependencies>
-      <dependency id="tropo-webapi" version="1.0.2" />
+      <dependency id="tropo-webapi" version="1.0.3" />
     </dependencies>
   </metadata>
   <files>
